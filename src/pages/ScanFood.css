@@ -1,0 +1,660 @@
+.scan-food-page {
+  height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+}
+
+.scan-food-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.scan-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.scan-card,
+.upload-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.scan-card:hover,
+.upload-card:hover {
+  transform: translateY(-5px);
+}
+
+.scan-icon,
+.upload-icon {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.scan-text,
+.upload-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  color: #64748b;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--light-gray);
+}
+
+.or-divider span {
+  padding: 0 1rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.upload-card input[type="file"] {
+  display: none;
+}
+
+/* Scanning view */
+.scanning-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.camera-frame {
+  width: 100%;
+  height: 70%;
+  position: relative;
+  background-color: #000;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.camera-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Allow click through to webcam */
+}
+
+.scanning-corners {
+  width: 80%;
+  height: 80%;
+  position: relative;
+}
+
+.corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+  border-top-width: 3px;
+  border-left-width: 3px;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+  border-top-width: 3px;
+  border-right-width: 3px;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
+
+.scanning-text {
+  color: white;
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.camera-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.capture-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.capture-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+}
+
+.switch-camera {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-button {
+  background-color: transparent;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.camera-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.camera-error p {
+  margin-bottom: 0.5rem;
+}
+
+.camera-error button {
+  background-color: #b91c1c;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.backend-error-help {
+  margin: 1rem 0;
+  background-color: #ffedd5;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  color: #7c2d12;
+  text-align: left;
+}
+
+.gemini-error {
+  background-color: #ede9fe;
+  color: #5b21b6;
+  border-left: 4px solid #8b5cf6;
+}
+
+.gemini-error a {
+  color: #6d28d9;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.gemini-error a:hover {
+  color: #4c1d95;
+}
+
+.backend-error-help p {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.backend-error-help ol {
+  margin-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.backend-error-help code {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.2rem;
+  font-family: monospace;
+}
+
+.error-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.secondary-button {
+  background-color: #6b7280;
+}
+
+.secondary-button:hover {
+  background-color: #4b5563;
+}
+
+/* Analyzing view */
+.analyzing-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.analyzing-container h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.preview-container {
+  width: 100%;
+  max-height: 50%;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  background-color: #f1f5f9;
+}
+
+.food-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.preview-placeholder {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+}
+
+.analyzing-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.analyzing-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--light-gray);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.analyzing-text {
+  color: var(--text-color);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .scan-food-page {
+    height: calc(100vh - 120px);
+  }
+
+  .scan-food-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .camera-frame {
+    height: 60%;
+  }
+
+  .capture-button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .capture-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .switch-camera {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cancel-button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* For landscape mode on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .scan-food-page h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .scanning-container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .camera-frame {
+    flex: 1;
+    height: 100%;
+    margin-right: 1rem;
+  }
+
+  .camera-controls {
+    flex-direction: column;
+    margin: 0;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+/* Add styles for disabled buttons */
+.switch-camera:disabled,
+.capture-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Add a loading indicator for the camera */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.scanning-text:not(.camera-ready) {
+  animation: pulse 1.5s infinite;
+}
+
+/* Improve camera error display */
+.camera-error {
+  margin: 2rem 1rem;
+}
+
+/* Add fallback for older browsers */
+.fallback-message {
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  color: #64748b;
+}
+
+.scan-food-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.camera-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.webcam {
+  width: 100%;
+  height: auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.capture-button,
+.try-again-button,
+.home-button,
+.analyze-button,
+.file-input-button {
+  background-color: #4a7dfc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.capture-button:hover,
+.try-again-button:hover,
+.home-button:hover,
+.analyze-button:hover,
+.file-input-button:hover {
+  background-color: #3864d3;
+}
+
+.home-button {
+  background-color: #6c757d;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.home-button:hover {
+  background-color: #5a6268;
+}
+
+.file-input {
+  display: none;
+}
+
+.scanned-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  background-color: #fff4f4;
+  border-left: 4px solid #ff5252;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.backend-error-help {
+  margin-top: 1rem;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  color: #343a40;
+  text-align: left;
+}
+
+.backend-error-help h4 {
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+
+.backend-error-help ol {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.backend-error-help li {
+  margin-bottom: 0.5rem;
+}
+
+.gemini-error {
+  background-color: #f0f5ff;
+  color: #2c4a7d;
+  border-left: 4px solid #4a7dfc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gemini-error a {
+  color: #4a7dfc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.gemini-error a:hover {
+  text-decoration: underline;
+}
+
+.gemini-error code {
+  background-color: rgba(74, 125, 252, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.backend-error-help p {
+  margin-bottom: 0.75rem;
+}
+
+/* Tab design */
+.tabs {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  border-bottom-color: #4a7dfc;
+  color: #4a7dfc;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .capture-button,
+  .try-again-button,
+  .home-button,
+  .analyze-button,
+  .file-input-button {
+    width: 100%;
+  }
+
+  .error-actions {
+    flex-direction: column;
+  }
+}

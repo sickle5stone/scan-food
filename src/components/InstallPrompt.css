@@ -1,0 +1,91 @@
+.install-prompt {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.install-prompt-content {
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.install-prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.install-prompt-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.close-button {
+  background: transparent;
+  color: var(--text-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.install-prompt-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.app-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.install-prompt-body p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.install-prompt-footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--light-gray);
+}
+
+.install-button {
+  background-color: var(--success-color);
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .install-prompt {
+    justify-content: flex-end;
+    padding: 1.5rem;
+  }
+
+  .install-prompt-content {
+    width: 360px;
+  }
+}
