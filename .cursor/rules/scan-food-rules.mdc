@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+I don't changes summary as a response.
+- make changes end-to-end when a modifications is made
+- can consider adding tests to guide this process
+- don't keep changing css unless it's in the prompt
