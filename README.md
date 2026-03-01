@@ -1,5 +1,7 @@
 # ScanFood - Food Recognition & Nutrition Tracker
 
+**[Live →](https://scan-food.onrender.com)**
+
 ScanFood is a full-stack web application that allows users to scan food items using their device's camera or uploaded images. The app uses Google Gemini AI to recognize food and provides detailed nutritional information.
 
 ## Setup
